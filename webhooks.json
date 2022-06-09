@@ -1,0 +1,31 @@
+[
+        {
+                "id": "redeploy",
+                "execute-command": "/home/node/webhooks/redeploy.sh",
+                "command-working-directory": "/home/node/www",
+                "http-methods": ["GET"],
+                "trigger-rule": {
+                        "match": {
+                                "type": "value",
+                                "value": "Bearer <secret>",
+                                "parameter": {
+                                        "source": "header",
+                                        "name": "Authorization"
+                                }
+                        }
+                },
+                "pass-arguments-to-command": [
+                        {
+                                "source": "url",
+                                "name": "repo"
+                        },
+                        {
+                                "source": "url",
+                                "name": "command"
+                        }
+                ],
+                "include-command-output-in-response": true,
+                "include-command-output-in-response-on-error": true,
+                "trigger-rule-mismatch-http-response-code": 401,
+        }
+]
