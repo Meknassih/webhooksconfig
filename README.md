@@ -8,7 +8,7 @@ apt install webhook
 ## Redeploy
 1. Clone in `/home/node/webhooks`.
 
-2.Create `/etc/default/webhook`:
+2. Create `/etc/default/webhook`:
 ```
 OPTIONS="-hooks=/home/node/webhooks/webhooks.json -hotreload -ip 127.0.0.1 -port 9000 -verbose"
 ```
